@@ -26,7 +26,7 @@ export class IOHandlerClass {
 
   async readInt() {
     const n = parseInt(await this.ask("Enter a Number: "));
-    return n || 0
+    return n || null
   }
   async readChar() {
     const n = await this.ask("Enter a Character: ");
@@ -34,7 +34,7 @@ export class IOHandlerClass {
   }
   async readFloat() {
     const n = parseFloat(await this.ask("Enter a Float: "));
-    return n || parseFloat("0")
+    return n || null
   }
 
   async readString() {
@@ -46,9 +46,9 @@ export class IOHandlerClass {
     n = n.trim()
     if (n) {
       if (n == "1" || n == "true") {
-        return 1
+        return true
       } else {
-        return 0
+        return false
       }
     }
     return 0;
