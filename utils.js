@@ -18,31 +18,31 @@ export class IOHandlerClass {
     });
   }
 
-  async readArray() {
-    const n = parseInt(await this.ask("Enter number of elements: "));
-    const line = await this.ask(`Enter ${n} elements (space-separated): `);
+  async readArray(userN, messageForN, messageForE) {
+    const n = userN || parseInt(await this.ask(messageForN || "Enter number of elements: "));
+    const line = await this.ask(messageForE || `Enter ${n} elements (space-separated): `);
     return line.split(" ").map(Number).filter((_, index) => index < n);
   }
 
-  async readInt() {
-    const n = parseInt(await this.ask("Enter a Number: "));
+  async readInt(message) {
+    const n = parseInt(await this.ask(message || "Enter a Number: "));
     return n || null
   }
-  async readChar() {
-    const n = await this.ask("Enter a Character: ");
+  async readChar(message) {
+    const n = await this.ask(message || "Enter a Character: ");
     return n[0] || ""
   }
-  async readFloat() {
-    const n = parseFloat(await this.ask("Enter a Float: "));
+  async readFloat(message) {
+    const n = parseFloat(await this.ask(message || "Enter a Float: "));
     return n || null
   }
 
-  async readString() {
-    const n = await this.ask("Enter a String: ");
+  async readString(message) {
+    const n = await this.ask(message || "Enter a String: ");
     return n || ""
   }
-  async readBool() {
-    let n = await this.ask("Enter a Boolean: ");
+  async readBool(message) {
+    let n = await this.ask(message || "Enter a Boolean: ");
     n = n.trim()
     if (n) {
       if (n == "1" || n == "true") {
@@ -54,8 +54,8 @@ export class IOHandlerClass {
     return 0;
   }
 
-  printArray(arr) {
-    console.log("Array:", arr);
+  printArray(arr, message) {
+    console.log(message || "Array:", arr);
   }
 
   close() {

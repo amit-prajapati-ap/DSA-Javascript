@@ -1,5 +1,20 @@
 import { io } from "../utils.js";
-import { binarySearch, findPeak, findPivot, firstOccurance, lastOccurance, linearSearch, noOfOccurance } from "./searchFunctions.js";
+import { allocateBook, binarySearch, findPeak, findPivot, findRoot, firstOccurance, lastOccurance, linearSearch, noOfOccurance } from "./searchFunctions.js";
+
+const bookAllocate = async () => {
+  const numberOfBooks = await io.readInt("Enter total books: ")
+  const pagesArray = await io.readArray(numberOfBooks,"", "Enter pages in each book: ")
+  const numberOfStudents = await io.readInt("Enter total students: ")
+  console.log(`${allocateBook(numberOfBooks, pagesArray, numberOfStudents)} is the maximum number of pages to allocate an student.`)
+  io.close()
+}
+
+const rootFinder = async () => {
+  const element = await io.readInt()
+  const root = findRoot(element)
+  console.log(`${element} is a square of ${root}`)
+  io.close()
+}
 
 const searchInRotation = async () => {
   const arr = await io.readArray()
