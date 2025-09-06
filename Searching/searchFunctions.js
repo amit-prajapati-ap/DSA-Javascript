@@ -1,3 +1,5 @@
+import { max } from "../utils.js"
+
 export const binarySearch = (arr, target, start = 0, e) => {
   let end = e || arr.length - 1
 
@@ -176,5 +178,42 @@ export const allocateBook = (books, pagesArray, students) => {
       start = mid + 1
     }
   }
+  return ans
+}
+ 
+export const findMaxDistnaceBetweenCows = (cowsDistance, cows) => {
+  let isPossible = (mid) => {
+    let cowCount = 1
+    let lastPos = cowsDistance[0]
+    for (let i = 0; i < cowsDistance.length; i++) {
+      if (cowsDistance[i] - lastPos >= mid) {
+        cowCount++
+        if (cowCount === cows) {
+          return true
+        }
+        lastPos = cowsDistance[i]
+      }
+    }
+    return false
+  }
+
+  let ans = 0
+  let maxi = -1
+  for (let i = 0; i < cowsDistance.length; i++) {
+    maxi = max(cowsDistance[i], maxi)
+  }
+
+  let start = 0
+  let end = maxi
+  while(start <= end) {
+    const mid = Math.floor(start + (end - start)/2)
+    if (isPossible(mid)) {
+      ans = mid
+      start = mid + 1
+    } else {
+      end = mid - 1
+    }
+  }
+
   return ans
 }

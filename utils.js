@@ -3,6 +3,12 @@ import readline from "readline";
 export function swap(arr, i, j) {
   [arr[i], arr[j]] = [arr[j], arr[i]];
 }
+export function max(a,b) {
+  if (a >= b) {
+    return a
+  }
+  return b
+}
 
 export class IOHandlerClass {
   constructor() {

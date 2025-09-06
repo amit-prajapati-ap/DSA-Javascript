@@ -1,5 +1,5 @@
 import { io } from "../utils.js";
-import { allocateBook, binarySearch, findPeak, findPivot, findRoot, firstOccurance, lastOccurance, linearSearch, noOfOccurance } from "./searchFunctions.js";
+import { allocateBook, binarySearch, findMaxDistnaceBetweenCows, findPeak, findPivot, findRoot, firstOccurance, lastOccurance, linearSearch, noOfOccurance } from "./searchFunctions.js";
 
 const bookAllocate = async () => {
   const numberOfBooks = await io.readInt("Enter total books: ")
@@ -8,6 +8,15 @@ const bookAllocate = async () => {
   console.log(`${allocateBook(numberOfBooks, pagesArray, numberOfStudents)} is the maximum number of pages to allocate an student.`)
   io.close()
 }
+
+const aggressiveCows = async () => {
+  const cows = await io.readInt("Enter number of cows: ")
+  const ledsDistance = await io.readArray("","Enter Total Number of stalls: ", "Enter Distance Between stalls: ")
+  console.log(`${findMaxDistnaceBetweenCows(ledsDistance.sort(), cows)} is the maximum possible minimum distance between cows.`)
+  io.close()
+}
+
+aggressiveCows()
 
 const rootFinder = async () => {
   const element = await io.readInt()
